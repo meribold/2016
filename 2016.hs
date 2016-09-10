@@ -13,7 +13,7 @@ applyOps (SolutionCandidate (x:y:zs) ops) =
    map (\(f, name) -> SolutionCandidate ((f x y):zs) (ops ++ [name])) allowedOps
 
 getSolutions :: SolutionCandidate -> [SolutionCandidate]
--- Did we get 2016?  If so, just return the identity.
+-- Did we get 2016?  If so, just wrap it in a list.
 getSolutions sC@(SolutionCandidate [2016] _) = [sC]
 -- If only one number remains in the list of numbers, return the empty list.
 getSolutions sC@(SolutionCandidate [x] _) = []
