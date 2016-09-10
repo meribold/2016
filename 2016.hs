@@ -17,7 +17,8 @@ getSolutions :: SolutionCandidate -> [SolutionCandidate]
 getSolutions sC@(SolutionCandidate [2016] _) = [sC]
 -- If only one number remains in the list of numbers, return the empty list.
 getSolutions sC@(SolutionCandidate [x] _) = []
--- Apply all operators to the first two numbers and recurse.
+-- Apply all operators to the first two numbers, recurse over the returned
+-- candidates, and flatten the resulting list of lists of `SolutionCandidate`s.
 getSolutions sC = concat $ map getSolutions (applyOps sC)
 
 main = print $ getSolutions problem
